@@ -24,24 +24,31 @@ public class AtlasPuntuaciones {
 	
 	public void run()
 	{
-		// Declaracion de todas las variables a usar en el programa
 
 
-		// Notificacion al usuario de la solicitud de dato
-
-		// Capturamos el dato con nuestro Scanner (que se llama, escaner)
-
-
-
-		// Realizamos los cálculos delegandolos a los métodos
+		 System.out.println("Ingrese el número de jugadores (Máximo 10):");
+			 int n = escaner.nextInt();
+				 
+		System.out.println("Ingrese el número de rondas (Máximo 5):");
+			int m = escaner.nextInt();
 
 
-		// Notificación al usuario de los resultados
+			int [] jugadores = CantJugadores(n);
+			jugadores = puntajeRondas(jugadores, m);
+			resultado(jugadores, m);
+			puntuacionAlta(jugadores);
+			int Ganador = puntuacionAlta(jugadores);
+	
 
 
-	}
 
-	public static void main(String[] args) {
+
+			 
+				
+		 
+			}
+		 
+			public static void main(String[] args) {
 		AtlasPuntuaciones mainApp = new AtlasPuntuaciones();
 		mainApp.run();
 	}
@@ -51,27 +58,56 @@ public class AtlasPuntuaciones {
 	 * @param int[] numeros
 	 * @return 
 	 */
-    public int calcularSumaTotal(int[] numeros) {
-        // Completar
+
+
+public int[] CantJugadores(int n) {
+		int [] jugadores = new int [n];
+		return jugadores;
+
+	} 
+	public int[] puntajeRondas(int[] jugadores, int m) {
+     for (int i = 0; i < jugadores.length; i++) { 
+        jugadores[i] = PuntajeRondas(i, m);
+    }
+    return jugadores;
+
+}
+	public int PuntajeRondas(int jugador, int m) {
+    	int puntajeTotal = 0;
+    for (int i = 0; i < m; i++) { 
+        System.out.println("Ingrese el puntaje del jugador " + (jugador + 1) + " en la ronda " + (i + 1) + ": ");
+       puntajeTotal += escaner.nextInt();
+
+    }
+	metodoPromedio(puntajeTotal, m);
+    return puntajeTotal;
+}
+	public  void resultado(int[] jugadores, int m) {
+        System.out.println("Resultados del torneo:");
+        for (int i = 0; i < jugadores.length; i++) { 
+            double promedio = metodoPromedio(jugadores[i], m);
+            System.out.println("El puntaje total del jugador " + (i + 1) + " es: " + jugadores[i] +" El promedio por ronda: " + promedio);
+        }
     }
 
-	/**
-	 * Descripción: El método calcularPromedio permite ...
-	 * @param int[] numeros
-	 * @return 
-	 */
-    public double calcularPromedio(int[] numeros) {
-        // Completar
+ 	public  double metodoPromedio(int puntTotal, int m) {
+		double resultado = (puntTotal / m);
+        return resultado;
     }
 
-	/**
-	 * Descripción: El método encontrarMayor permite ...
-	 * @param double[] numeros
-	 * @return 
-	 */
-    public double encontrarMayor(double[] numeros) {
-        // Completar
-    }
+	public  int  puntuacionAlta(int[] jugadores) {
+		int mayor = 0;
+		int jugadorGanador = 1;
+		for (int i = 0; i < jugadorGanador.length; i++) {
+
+		if (jugadorGanador > mayor) {
+			mayor = jugadorGanador;
+			System.out.println("el jugador con la puntuacion mas alta es: " + jugadorGanador);
+		}
+
+		}
+
+	}
 
 	
 
